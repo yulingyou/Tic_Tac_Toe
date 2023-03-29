@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative 'tic_tac_toe'
+require 'tic_tac_toe'
 
 describe TicTacToe do
   describe "#initialize" do
