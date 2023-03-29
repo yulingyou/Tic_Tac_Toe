@@ -8,4 +8,11 @@ describe TicTacToe do
       expect(game.board).to eq([["", "", ""], ["", "", ""], ["", "", ""]])
     end
   end
+
+  describe "#take_turn" do
+    it "updates the board with the player's symbol if the field is not already taken" do
+      game = TicTacToe.new
+      game.take_turn(0, 0)
+      expect(game.board).to eq([["X", "", ""], ["", "", ""], ["", "", ""]])
+  end
 end
