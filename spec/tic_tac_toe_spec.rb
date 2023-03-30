@@ -14,5 +14,6 @@ describe TicTacToe do
       game = TicTacToe.new
       game.take_turn(0, 0)
       expect(game.board).to eq([["X", "", ""], ["", "", ""], ["", "", ""]])
+    end
   end
 end
