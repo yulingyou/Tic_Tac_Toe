@@ -15,5 +15,11 @@ describe TicTacToe do
       game.take_turn(0, 0)
       expect(game.board).to eq([["X", "", ""], ["", "", ""], ["", "", ""]])
     end
+
+    it "does not update the board if the field is already taken" do
+      game = TicTacToe.new
+      game.take_turn(0, 0)
+      expect(game.take_turn(0, 0)).to be_falsey
+    end
   end
 end
