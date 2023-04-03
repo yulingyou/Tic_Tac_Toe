@@ -21,5 +21,12 @@ describe TicTacToe do
       game.take_turn(0, 0)
       expect(game.take_turn(0, 0)).to be_falsey
     end
+
+    it "switches the current player after each turn" do
+      game = TicTacToe.new
+      game.take_turn(0, 0)
+      expect(game.take_turn(1, 1)).to be_truthy
+      expect(game.board).to eq([["X", "", ""], ["", "O", ""], ["", "", ""]])
+    end
   end
 end
