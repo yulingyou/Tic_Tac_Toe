@@ -25,4 +25,8 @@ class TicTacToe
       @current_player = "X"
     end
   end
+
+  def winner
+    nil
+  end
 end

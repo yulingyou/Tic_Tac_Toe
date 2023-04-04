@@ -29,4 +29,11 @@ describe TicTacToe do
       expect(game.board).to eq([["X", "", ""], ["", "O", ""], ["", "", ""]])
     end
   end
+
+  describe "#winner" do
+    it "returns nil if no player has won yet" do
+      game = TicTacToe.new
+      expect(game.winner).to be_nil
+    end
+  end
 end
