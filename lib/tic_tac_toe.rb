@@ -11,6 +11,7 @@ class TicTacToe
   def take_turn(row, col)
     if @board[row][col] == ""
       @board[row][col] = @current_player
+      check_winner
       switch_players
       return true
     else
@@ -26,7 +27,16 @@ class TicTacToe
     end
   end
 
-  def winner
-    nil
+  def check_winner
+    # Check rows
+    @board.each do |row|
+      if row.all? { |cell| cell == "X" }
+        return "X"
+      elsif row.all? { |cell| cell == "O" }
+        return "O"
+      else
+        return nil
+      end
+    end
   end
 end
