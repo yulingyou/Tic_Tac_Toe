@@ -2,6 +2,7 @@ class TicTacToe
   def initialize
     @board = Array.new(3) { Array.new(3, "") }
     @current_player = "X"
+    @winner = nil
   end
 
   def board
@@ -27,16 +28,28 @@ class TicTacToe
     end
   end
 
+  def winner
+    @winner
+  end
+
   def check_winner
     # Check rows
     @board.each do |row|
       if row.all? { |cell| cell == "X" }
-        return "X"
+        @winner = "X"
       elsif row.all? { |cell| cell == "O" }
-        return "O"
-      else
-        return nil
-      end
+        @winner = "O"
+    end
+    end
+
+
+    # Check columns
+    @board.transpose.each do |col|
+      if col.all? { |cell| cell == "X" }
+        @winner = "X"
+      elsif col.all? { |cell| cell == "O" }
+        @winner = "O"
+    end
     end
   end
 end

@@ -33,7 +33,7 @@ describe TicTacToe do
   describe "#winner" do
     it "returns nil if no player has won yet" do
       game = TicTacToe.new
-      expect(game.check_winner).to be_nil
+      expect(game.winner).to be_nil
     end
 
     it "returns 'X' if X has won horizontally" do
@@ -43,7 +43,7 @@ describe TicTacToe do
       game.take_turn(0, 1)
       game.take_turn(1, 1)
       expect(game.take_turn(0, 2)).to be_truthy
-      expect(game.check_winner).to eq("X")
+      expect(game.winner).to eq("X")
     end
 
     it "returns 'O' if O has won vertically" do
@@ -52,8 +52,9 @@ describe TicTacToe do
       game.take_turn(0, 1)
       game.take_turn(1, 0)
       game.take_turn(1, 1)
-      expect(game.take_turn(2, 0)).to be_truthy
-      expect(game.check_winner).to eq("O")
+      game.take_turn(0, 2)
+      expect(game.take_turn(2, 1)).to be_truthy
+      expect(game.winner).to eq("O")
     end
   end
 end
