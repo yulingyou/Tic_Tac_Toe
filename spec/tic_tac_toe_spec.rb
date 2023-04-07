@@ -45,5 +45,15 @@ describe TicTacToe do
       expect(game.take_turn(0, 2)).to be_truthy
       expect(game.check_winner).to eq("X")
     end
+
+    it "returns 'O' if O has won vertically" do
+      game = TicTacToe.new
+      game.take_turn(0, 0)
+      game.take_turn(0, 1)
+      game.take_turn(1, 0)
+      game.take_turn(1, 1)
+      expect(game.take_turn(2, 0)).to be_truthy
+      expect(game.check_winner).to eq("O")
+    end
   end
 end
