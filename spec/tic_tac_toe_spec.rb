@@ -56,5 +56,15 @@ describe TicTacToe do
       expect(game.take_turn(2, 1)).to be_truthy
       expect(game.winner).to eq("O")
     end
+
+    it "returns 'X' if X has won diagonally" do
+      game = TicTacToe.new
+      game.take_turn(0, 0)
+      game.take_turn(0, 1)
+      game.take_turn(1, 1)
+      game.take_turn(1, 0)
+      expect(game.take_turn(2, 2)).to be_truthy
+      expect(game.winner).to eq("X")
+    end
   end
 end
