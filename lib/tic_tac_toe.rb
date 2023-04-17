@@ -10,13 +10,15 @@ class TicTacToe
   end
 
   def take_turn(row, col)
-    if @board[row][col] == ""
-      @board[row][col] = @current_player
-      check_winner
-      switch_players
-      return true
-    else
-      return false
+    if row.between?(0,2) && col.between?(0,2) && @board[row][col] == ""
+      if @board[row][col] == ""
+        @board[row][col] = @current_player
+        check_winner
+        switch_players
+        return true
+      else
+        return false
+      end
     end
   end
 
@@ -34,12 +36,12 @@ class TicTacToe
 
   def check_winner
     # Check rows
-    @board.each do |row|
-      if row.all? { |cell| cell == "X" }
-        @winner = "X"
-      elsif row.all? { |cell| cell == "O" }
-        @winner = "O"
-    end
+      @board.each do |row|
+        if row.all? { |cell| cell == "X" }
+          @winner = "X"
+        elsif row.all? { |cell| cell == "O" }
+          @winner = "O"
+      end
     end
 
 
@@ -49,7 +51,32 @@ class TicTacToe
         @winner = "X"
       elsif col.all? { |cell| cell == "O" }
         @winner = "O"
+      end
     end
-    end
+
+        # Check diagonals
+        # puts "board", @board
+        if [@board[0][0], @board[1][1], @board[2][2]].all? { |cell| cell == "X" } ||
+          [@board[0][2], @board[1][1], @board[2][0]].all? { |cell| cell == "X" }
+          @winner = "X"
+        elsif [@board[0][0], @board[1][1], @board[2][2]].all? { |cell| cell == "O" } ||
+          [@board[0][2], @board[1][1], @board[2][0]].all? { |cell| cell == "O" }
+          @winner = "O"
+    
+        end
+
   end
+
+
+
+    
+
+    # if @board[0][0] == @board[1][1] && @board[1][1] == @board[2][2] && @board[1][1] != ""
+    #   @winner = @board[1][1]
+    # end
+    # if @board[0][2] == @board[1][1] && @board[1][1] == @board[2][0] && @board[1][1] != ""
+    #   @winner = @board[1][1]
+    # end
+
+
 end
